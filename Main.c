@@ -1,23 +1,23 @@
 /**
  * @file main.c
  * @author Ian, Chen 
- * Trimming strings
+ * Trimming strings example
  * 
  * 
- * @version 0.1
+ * @version 1.0
  * @date 2023-07-31
  * 
  */
 
 #include "Trim.h"
 
-// int main(){
+int main(){
 
 
 
-//     unsigned char* str =" dddd dddddddddd";
+    unsigned char* str =" dddd dddddddddd";
+    Trim(str , LEFT);
+    printf("%s",str);
 
-//     Trim(str , 0);
-
-
-// }
+    
+}

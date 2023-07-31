@@ -39,18 +39,16 @@ void Trim(unsigned char *sourceSqlStmt, short direction)
     {
         offset += offsetDirection;
     }
-    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
-    // 0 1 2 3
 
-        if (direction == 0)
-        { // 53-1                //10-0
-            memmove(sourceSqlStmt, sourceSqlStmt + offset, sourceSqlStmtLength - offset);
-            sourceSqlStmt[sourceSqlStmtLength - offset] = '\0';
-        }
-        else if (direction == 1)
-        {
+    
+    if (direction == 0)
+    { 
+        memmove(sourceSqlStmt, sourceSqlStmt + offset, sourceSqlStmtLength - offset);
+        sourceSqlStmt[sourceSqlStmtLength - offset] = '\0';
+    }
+    else if (direction == 1)
+    {
 
-            sourceSqlStmt[offset + 1] = '\0';
-        }
-        
+        sourceSqlStmt[offset + 1] = '\0';
+    }
 }
