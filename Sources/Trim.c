@@ -1,3 +1,14 @@
+/**
+ * @file Trim.c
+ * @author Ian, Chen
+ * @brief Trim function implementation
+ * @version 1.0
+ * @date 2023-07-31
+ * 
+ * 
+ */
+
+
 #include "Trim.h"
 
 /**
@@ -13,14 +24,14 @@ void Trim(unsigned char *sourceSqlStmt, short direction)
 
     size_t sourceSqlStmtLength = (unsigned int)strlen((unsigned char *)sourceSqlStmt);
 
-    /** assign string startindex end endindex */
+    // assign string startindex end endindex 
     size_t offset = direction * (sourceSqlStmtLength - 1);
     size_t startindex = 0;
     size_t endindex = sourceSqlStmtLength;
 
     size_t offsetDirection = 0;
 
-    /** direction */
+    // direction 
     if (direction == 0)
     {
         offsetDirection = 1;
@@ -34,7 +45,7 @@ void Trim(unsigned char *sourceSqlStmt, short direction)
         exit(1);
     }
 
-    /** Calculate space characters */
+   // Calculate space characters 
     while (sourceSqlStmt[offset] == ' ' && offset >= startindex && offset <= endindex - 1)
     {
         offset += offsetDirection;
