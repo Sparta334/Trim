@@ -11,16 +11,14 @@
 void Trim(unsigned char *sourceSqlStmt, short direction)
 {
 
-    unsigned int sourceSqlStmtLength = (unsigned int)strlen((char *)sourceSqlStmt);
+    size_t sourceSqlStmtLength = (unsigned int)strlen((unsigned char *)sourceSqlStmt);
 
     /** assign string startindex end endindex */
-    unsigned int offset = direction * (sourceSqlStmtLength - 1);
-    unsigned int startindex = 0;
-    unsigned int endindex = sourceSqlStmtLength;
+    size_t offset = direction * (sourceSqlStmtLength - 1);
+    size_t startindex = 0;
+    size_t endindex = sourceSqlStmtLength;
 
-    unsigned int offsetDirection = 0;
-
-    unsigned char *secondSqlStmt = NULL;
+    size_t offsetDirection = 0;
 
     /** direction */
     if (direction == 0)
@@ -37,29 +35,19 @@ void Trim(unsigned char *sourceSqlStmt, short direction)
     }
 
     /** Calculate space characters */
-    while (sourceSqlStmt[offset] == ' ' && offset >= startindex && offset < endindex)
+    while (sourceSqlStmt[offset] == ' ' && offset >= startindex && offset <= endindex - 1)
     {
         offset += offsetDirection;
     }
-
-    printf("%d",sourceSqlStmtLength - offset);
     // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
     // 0 1 2 3
-    if(offset == 0 || offset >= endindex-1  ){
+    if (!(offset == 0 || offset == endindex - 1))
+    {
 
-        printf("No Space");
-
-    }
-    else{
         if (direction == 0)
-        {                                           //53-1                //10-0
-            secondSqlStmt = (unsigned char *)malloc((sourceSqlStmtLength - offset + 1) * sizeof(unsigned char));
-            memcpy(secondSqlStmt, sourceSqlStmt + offset, sourceSqlStmtLength - offset -1 );
-            secondSqlStmt[sourceSqlStmtLength - offset-1] = '\0';
-            printf("%s", secondSqlStmt);
-            memcpy(sourceSqlStmt, secondSqlStmt, sourceSqlStmtLength - offset-2);
-
-            sourceSqlStmt[sourceSqlStmtLength - offset-1] = '\0';
+        { // 53-1                //10-0
+            memmove(sourceSqlStmt, sourceSqlStmt + offset, sourceSqlStmtLength - offset);
+            sourceSqlStmt[sourceSqlStmtLength - offset] = '\0';
         }
         else if (direction == 1)
         {
@@ -67,7 +55,4 @@ void Trim(unsigned char *sourceSqlStmt, short direction)
             sourceSqlStmt[offset + 1] = '\0';
         }
     }
-
-    free(secondSqlStmt);
-      
 }

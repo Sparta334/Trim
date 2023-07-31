@@ -11,14 +11,13 @@
 
 #include "Trim.h"
 
-int main(){
+// int main(){
 
 
 
-    unsigned char* str = "     ssss     " ;
+//     unsigned char* str =" dddd dddddddddd";
 
-    Trim(str , 0);
+//     Trim(str , 0);
 
-    printf("\n%s\n" , str);
 
-}
+// }
