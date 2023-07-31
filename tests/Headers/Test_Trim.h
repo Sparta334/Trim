@@ -10,3 +10,5 @@
 void Test_Trim_FrontSpace(void** State);
 void Test_Trim_BackSpace(void** State);
 void Test_Trim(void** State);
+
+void Test_Trim_OnlySpace(void** State);

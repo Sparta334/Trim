@@ -16,8 +16,9 @@ const struct CMUnitTest tests[] = {
 
     cmocka_unit_test(Test_Trim_FrontSpace),
     cmocka_unit_test(Test_Trim_BackSpace),
-
     cmocka_unit_test(Test_Trim),
+    cmocka_unit_test(Test_Trim_OnlySpace),
+    
     
 
 };
